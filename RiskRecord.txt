@@ -1,2 +1,29 @@
 RateDeMatching 2019 June 29 0733
-1.
+1.When new PUSCH data coming, but input Ping/Pong buffer data have not been processed completely; 
+  if the write address is equal or ahead of the read address for the corresponding Ping/Pong buffer, 
+  error message will report to ARM Processor to indicate that ‘Input buffer overflow’, 
+  meanwhile write address is running normally, but write enable signal should set to ‘0’.
+  
+  Little Risk 
+  
+  [Should do]
+  
+  1.Generate 8 CounterRegisters to record the Differences between Data Ready Numbers and Data Process Numbers
+    For each user, if E Size Data Ready, the corresponding user CounterRegister will be Self-increase 1,
+    if E Size Data process complete, the corresponding user CounterRegister will be Self-reduction 1,
+   
+  2.Condition of Input buffer overflow Generate
+    2.1 user CounterRegister <  2 ,  'Input buffer overflow' for corresponding user will stay at '0'
+    2.2 user CounterRegister >= 2 
+        2.2.1 Branch 1, corresponding user new PUSCH data NOT coming  
+              'Input buffer overflow' for corresponding user will stay at '0'
+        2.2.2 Branch 2, corresponding user new PUSCH data IS  coming  
+              2.2.2.1 If E Size Data process was NOT in the Last Qm Process , 'Input buffer overflow' will set to '1'
+              2.2.2.2 If E Size Data process was     in the Last Qm Process , 
+                      2.2.2.2.1 if the write address is equal or ahead of the read address for the corresponding Ping/Pong buffer
+                                'Input buffer overflow' will set to '1'
+                      2.2.2.2.1 if the write address is less than the read address for the corresponding Ping/Pong buffer           
+                                'Input buffer overflow' will stay at '0'
+
+  
+  
