@@ -6,7 +6,7 @@ RateDeMatching 2019 June 29 0733
   
   Little Risk 
   
-  [Should do]
+  [Should do] 
   
   1.Generate 8 CounterRegisters to record the Differences between Data Ready Numbers and Data Process Numbers
     For each user, if E Size Data Ready, the corresponding user CounterRegister will be Self-increase 1,
