@@ -25,5 +25,13 @@ RateDeMatching 2019 June 29 0733
                       2.2.2.2.1 if the write address is less than the read address for the corresponding Ping/Pong buffer           
                                 'Input buffer overflow' will stay at '0'
 
-  
+Data Stream Process between Low PHY and LLR 2019 July 01 1716
+1. The Ratio of Data Amount between the IQ data and noise data for each user configured by software during Corresponding time slot                   
+   /* This Ratio , Is it exactly an integer?  If so, it can simplifie our design*/
+ 
+2. The FIFO read control state machine whether need to wait for the corresponding user data have be sent to the LLR module complete,
+   then starting the next user?
+   
+  /* If so, generate the o_user_start/o_user_end signals, will simplifie our design */
+  /* Otherwise, We need to count the data amount exactly about the IQ and noise data*/
   
