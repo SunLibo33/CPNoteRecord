@@ -17,6 +17,8 @@ wire [15:0] o_noise_data;
 reg IQ_FIFO_Empty;
 reg Noise_FIFO_Empty;
 
+reg [15:0] tb_in_a;
+
 
 initial 
   begin
@@ -24,7 +26,7 @@ initial
 	tb_sclk  = 1'b0;
     #100
 	tb_rst_n = 1'b1;
-	//gen_data();
+	gen_data();
   end
   
 initial 
@@ -32,7 +34,7 @@ initial
    IQ_FIFO_Empty=1'b0;
    Noise_FIFO_Empty=1'b0;
    
-   #2090
+   #2130
    
    IQ_FIFO_Empty=1'b1;
    
@@ -53,6 +55,8 @@ UPDSLOWPHYTOLLR UPDSLOWPHYTOLLR_instance(
   .i_cur_user_re_amounts(16'd1800),
   .Noise_Data_SUM({16'h77,16'h66,16'h55,16'h44,16'h33,16'h22,16'h11,16'h0C}),
   .IQ_Data_SUM({16'h77,16'h66,16'h55,16'h44,16'h33,16'h22,16'h11,16'h0C}),
+  //.Noise_Data_SUM(({8{tb_in_a}})),
+  //.IQ_Data_SUM(({8{tb_in_a}})),
   .IQ_FIFO_Empty(IQ_FIFO_Empty),
   .Noise_FIFO_Empty(Noise_FIFO_Empty),
   .IQ_FIFO_Read_Enable(IQ_FIFO_Read_Enable),
@@ -79,20 +83,20 @@ UPDSLOWPHYTOLLR UPDSLOWPHYTOLLR_instance(
   output reg  [15:0]  o_re1_data_q, 
   output reg  [15:0]  o_noise_data */
 
-/* task gen_data();
+ task gen_data();
      integer m,n;
 	 begin
-	   for(n=0;n<256;n=n+1) 
+	   for(n=0;n<1024;n=n+1) 
 	     begin
-		   for(m=0;m<32;m=m+1)
+		   for(m=0;m<128;m=m+1)
 		   begin
 			 @(posedge tb_sclk);
-			   tb_in_a=1;
+			   tb_in_a=m;
 		   end
 		end
 	 end
 endtask 
- */
+
 /*  task gen_data();
      integer i,data_tmp;
 	 begin
