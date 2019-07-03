@@ -36,11 +36,11 @@ initial
    
    #2130
    
-   IQ_FIFO_Empty=1'b1;
+   Noise_FIFO_Empty=1'b1;
    
    #780
    
-   IQ_FIFO_Empty=1'b0;
+   Noise_FIFO_Empty=1'b0;
    
 
   end  
