@@ -49,7 +49,7 @@ UPDSLOWPHYTOLLR UPDSLOWPHYTOLLR_instance(
   .i_rx_rstn(tb_rst_n), 
   .i_rx_fsm_rstn(tb_rst_n), 			 
   .i_core_clk(tb_sclk), 
-  .i_user_iq_noise_rate(16'd8),
+  .i_user_iq_noise_rate(16'd6),
   .i_cur_user_re_amounts(16'd1800),
   .Noise_Data_SUM({16'h77,16'h66,16'h55,16'h44,16'h33,16'h22,16'h11,16'h0C}),
   .IQ_Data_SUM({16'h77,16'h66,16'h55,16'h44,16'h33,16'h22,16'h11,16'h0C}),

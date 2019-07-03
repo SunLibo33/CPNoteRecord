@@ -96,9 +96,9 @@ begin
                   Next_State=USERSEND;
               end
 			else if(IQ_FIFO_Empty==1'b1)
-			  begin
-                Next_State=WAIT;
-              end
+              Next_State=WAIT;
+            else
+              Next_State=USERSEND;
 		  end
         USERCOMP: Next_State=IDLE;
 
