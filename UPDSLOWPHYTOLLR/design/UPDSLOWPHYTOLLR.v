@@ -5,9 +5,17 @@ module UPDSLOWPHYTOLLR
   input  wire         i_rx_fsm_rstn, 			 
   input  wire         i_core_clk, 
   input  wire [15:0]  i_user_iq_noise_rate,
+  input  wire [15:0]  i_cur_user_re_amounts,
+  
+  input wire  [127:0] Noise_Data_SUM,
+  input wire  [127:0] IQ_Data_SUM,
+  input wire          IQ_FIFO_Empty,
+  input wire          Noise_FIFO_Empty,
   
   output wire         IQ_FIFO_Read_Enable,
   output wire         Noise_FIFO_Read_Enable,
+  
+  
  
   output reg          o_data_strobe,
   output reg  [15:0]  o_re0_data_i, 
@@ -29,9 +37,75 @@ reg [15:0] LoopNoiseInnerCycleCounter=16'd0;
 
 reg [15:0]RE_Counter=16'd0;
 
-assign data_permit_send       = ( (IQ_FIFO_Empty == 1'b0) && (Noise_FIFO_Empty == 1'b0) );
-assign IQ_FIFO_Read_Enable    = ( ( LoopCycleCounter[0] ==  1'b0 )&& (Current_State==USERSEND) && (IQ_FIFO_Empty==1'b1) );
-assign Noise_FIFO_Read_Enable = ( ( LoopCycleCounter    == 16'd0 )&& (Current_State==USERSEND) && (Noise_FIFO_Empty==1'b1) );
+parameter IDLE        = 8'b0000_0001;
+parameter USERSTART   = 8'b0000_0010;
+parameter WAIT        = 8'b0000_0100;
+parameter USERSEND    = 8'b0000_1000;
+parameter USERCOMP    = 8'b0001_0000;
+
+
+reg [7:0]Current_State = IDLE;
+reg [7:0]Next_State    = IDLE;
+
+assign data_permit_send       = ( (IQ_FIFO_Empty != 1'b1) && (Noise_FIFO_Empty != 1'b1) );
+assign IQ_FIFO_Read_Enable    = ( ( LoopCycleCounter[0] ==  1'b0 )&& (Current_State==USERSEND) && (IQ_FIFO_Empty!=1'b1) );
+assign Noise_FIFO_Read_Enable = ( ( LoopCycleCounter    == 16'd0 )&& (Current_State==USERSEND) && (Noise_FIFO_Empty!=1'b1) );
+
+always @(posedge i_core_clk or negedge i_rx_rstn or negedge i_rx_fsm_rstn)
+begin
+  if((i_rx_rstn==1'b0)||(i_rx_fsm_rstn==1'b0))
+    begin
+	  Current_State<=IDLE;
+	end
+  else
+    begin
+	  Current_State<=Next_State;
+	end
+end
+
+ 
+always @(*)
+begin
+  if((i_rx_rstn==1'b0)||(i_rx_fsm_rstn==1'b0))
+    begin
+	  Next_State=IDLE;
+	end
+  else
+    begin
+	  case(Current_State)
+	    IDLE: Next_State=USERSTART;
+	    USERSTART: Next_State=WAIT;
+	    WAIT:
+		  begin
+		    if(data_permit_send==1'b1)
+			  Next_State=USERSEND;
+			else
+			  Next_State=WAIT;
+		  end
+	    USERSEND:
+		  begin
+            if(RE_Counter>=i_cur_user_re_amounts)
+              Next_State=USERCOMP;
+		    else if(LoopCycleCounter >= ( (i_user_iq_noise_rate<<2)-16'd1 ) )
+			  begin
+                if(Noise_FIFO_Empty==1'b1)
+                  Next_State=WAIT;
+                else if(IQ_FIFO_Empty==1'b1)
+                  Next_State=WAIT;
+                else 
+                  Next_State=USERSEND;
+              end
+			else if(IQ_FIFO_Empty==1'b1)
+			  begin
+                Next_State=WAIT;
+              end
+		  end
+        USERCOMP: Next_State=IDLE;
+
+        default: Next_State=IDLE;
+      endcase		
+	end
+end
 
 always @(posedge i_core_clk or negedge i_rx_rstn or negedge i_rx_fsm_rstn)
 begin
@@ -46,7 +120,7 @@ begin
       else if(Current_State==USERSEND)
         begin
           if(IQ_FIFO_Read_Enable)
-            RE_Counter<=RE_Counter+16'd2;  
+            RE_Counter<=RE_Counter+16'd4;  
         end
 	end
 end
