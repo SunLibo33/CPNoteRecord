@@ -120,7 +120,7 @@ begin
         RE_Counter<=16'd0;
       else if(Current_State==USERSEND)
         begin
-          if(IQ_FIFO_Read_Enable)
+          if(IQ_FIFO_Read_Enable==1'b1)
             RE_Counter<=RE_Counter+16'd4;  
         end
 	end

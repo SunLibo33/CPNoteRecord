@@ -38,7 +38,7 @@ initial
    #2090
    
    Noise_FIFO_Empty=1'b1;
-   #120
+   #120.7
    
    IQ_FIFO_Empty=1'b1;
    
