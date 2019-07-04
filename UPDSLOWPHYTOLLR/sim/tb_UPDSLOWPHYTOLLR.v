@@ -7,6 +7,7 @@ reg tb_rst_n;
 wire IQ_FIFO_Read_Enable;
 wire Noise_FIFO_Read_Enable;
 wire o_data_strobe;
+wire Strobe_Enable;
 
 wire [15:0] o_re0_data_i;
 wire [15:0] o_re0_data_q;
@@ -34,13 +35,18 @@ initial
    IQ_FIFO_Empty=1'b0;
    Noise_FIFO_Empty=1'b0;
    
-   #2130
+   #2090
    
    Noise_FIFO_Empty=1'b1;
+   #120
+   
+   IQ_FIFO_Empty=1'b1;
    
    #780
    
    Noise_FIFO_Empty=1'b0;
+   #800
+   IQ_FIFO_Empty=1'b0;
    
 
   end  
@@ -52,7 +58,7 @@ UPDSLOWPHYTOLLR UPDSLOWPHYTOLLR_instance(
   .i_rx_fsm_rstn(tb_rst_n), 			 
   .i_core_clk(tb_sclk), 
   .i_user_iq_noise_rate(16'd6),
-  .i_cur_user_re_amounts(16'd1800),
+  .i_cur_user_re_amounts(16'd1797),
   .Noise_Data_SUM({16'h77,16'h66,16'h55,16'h44,16'h33,16'h22,16'h11,16'h0C}),
   .IQ_Data_SUM({16'h77,16'h66,16'h55,16'h44,16'h33,16'h22,16'h11,16'h0C}),
   //.Noise_Data_SUM(({8{tb_in_a}})),
@@ -61,6 +67,7 @@ UPDSLOWPHYTOLLR UPDSLOWPHYTOLLR_instance(
   .Noise_FIFO_Empty(Noise_FIFO_Empty),
   .IQ_FIFO_Read_Enable(IQ_FIFO_Read_Enable),
   .Noise_FIFO_Read_Enable(Noise_FIFO_Read_Enable),
+  .Strobe_Enable(Strobe_Enable),
   .o_data_strobe(o_data_strobe),
   .o_re0_data_i(o_re0_data_i),
   .o_re0_data_q(o_re0_data_q),

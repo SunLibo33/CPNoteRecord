@@ -30,6 +30,8 @@ add wave -decimal -color red tb_UPDSLOWPHYTOLLR/UPDSLOWPHYTOLLR_instance/SendNoi
 add wave -decimal -color red tb_UPDSLOWPHYTOLLR/UPDSLOWPHYTOLLR_instance/SendNoiseCycleCounter
 add wave -decimal -color red tb_UPDSLOWPHYTOLLR/UPDSLOWPHYTOLLR_instance/SendIQCycleCounter
 add wave -decimal -color green tb_UPDSLOWPHYTOLLR/UPDSLOWPHYTOLLR_instance/RE_Counter
+add wave -decimal -color green tb_UPDSLOWPHYTOLLR/UPDSLOWPHYTOLLR_instance/Send_RE_Counter
+add wave -decimal -color green tb_UPDSLOWPHYTOLLR/UPDSLOWPHYTOLLR_instance/Strobe_Enable
  
 add wave -hex -color green tb_UPDSLOWPHYTOLLR/UPDSLOWPHYTOLLR_instance/Current_State
 add wave -hex -color green tb_UPDSLOWPHYTOLLR/UPDSLOWPHYTOLLR_instance/Next_State

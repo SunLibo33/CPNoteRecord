@@ -14,7 +14,7 @@ module UPDSLOWPHYTOLLR
   
   output wire         IQ_FIFO_Read_Enable,
   output wire         Noise_FIFO_Read_Enable,
-  
+  output wire         Strobe_Enable,
   
  
   output reg          o_data_strobe,
@@ -36,6 +36,7 @@ reg [15:0] SendNoiseCycleCounterPre=16'd0;
 reg [15:0] LoopNoiseInnerCycleCounter=16'd0;
 
 reg [15:0]RE_Counter=16'd0;
+reg [15:0]Send_RE_Counter=16'd0;
 
 parameter IDLE        = 8'b0000_0001;
 parameter USERSTART   = 8'b0000_0010;
@@ -84,7 +85,7 @@ begin
 		  end
 	    USERSEND:
 		  begin
-            if(RE_Counter>=i_cur_user_re_amounts)
+            if(RE_Counter>=(i_cur_user_re_amounts + 16'd1))
               Next_State=USERCOMP;
 		    else if(LoopCycleCounter >= ( (i_user_iq_noise_rate<<2)-16'd1 ) )
 			  begin
@@ -124,6 +125,25 @@ begin
         end
 	end
 end
+
+always @(posedge i_core_clk or negedge i_rx_rstn or negedge i_rx_fsm_rstn)
+begin
+  if((i_rx_rstn==1'b0)||(i_rx_fsm_rstn==1'b0))
+    begin
+	  Send_RE_Counter<=16'd0;
+	end
+  else
+    begin
+      if(Current_State==USERSTART)
+        Send_RE_Counter<=16'd0;
+      else if(o_data_strobe==1'b1)
+        begin
+          Send_RE_Counter<=Send_RE_Counter+16'd2;  
+        end
+	end
+end
+
+assign Strobe_Enable = (Send_RE_Counter < (i_cur_user_re_amounts + 16'd1));
 
 always @(posedge i_core_clk or negedge i_rx_rstn or negedge i_rx_fsm_rstn)
 begin
