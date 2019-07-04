@@ -89,9 +89,7 @@ begin
               Next_State=USERCOMP;
 		    else if(LoopCycleCounter >= ( (i_user_iq_noise_rate<<2)-16'd1 ) )
 			  begin
-                if(Noise_FIFO_Empty==1'b1)
-                  Next_State=WAIT;
-                else if(IQ_FIFO_Empty==1'b1)
+                if((Noise_FIFO_Empty==1'b1)||(IQ_FIFO_Empty==1'b1))
                   Next_State=WAIT;
                 else 
                   Next_State=USERSEND;
