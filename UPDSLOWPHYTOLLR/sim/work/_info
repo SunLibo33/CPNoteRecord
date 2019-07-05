@@ -13,56 +13,63 @@ Z1 04 18 4 work tb_UPDSLOWPHYTOLLR fast 0
 =1-847beb39f64b-5d1dcf40-9f-20
 Z2 o-quiet -auto_acc_if_foreign -work work +acc
 n@_opt
-OL;O;10.2;57
-Z3 dC:\Work\MyGit\CPNoteRecord\UPDSLOWPHYTOLLR\sim
+Z3 OL;O;10.2;57
+Z4 dC:\Work\MyGit\CPNoteRecord\UPDSLOWPHYTOLLR\sim
 !s110 1562234688
 T_opt1
-!s110 1562245206
 VOz>[4HWO2]No@1VfSSdO03
 R1
 =1-74d4355e1b46-5d1df856-79-25c4
 R2
 n@_opt1
 OL;O;10.2c;57
+R4
+!s110 1562245206
+T_opt2
+!s110 1562318866
+Vbl?Z1FmMMX<lNo@3F<J?40
+R1
+=1-847beb39f64b-5d1f1811-396-364c
+R2
+n@_opt2
+R3
 vtb_UPDSLOWPHYTOLLR
+!s100 7g8SJ_nJ7QF4Tb5LXagP?0
 II;BWO`iTDAW8n6`09DPUC2
-Z4 V`JN@9S9cnhjKRR_L]QIcM3
-Z5 dE:/CASA/MyGit/CPNoteRecord/UPDSLOWPHYTOLLR/sim
-w1562245187
+Z5 V`JN@9S9cnhjKRR_L]QIcM3
+R4
+w1562245463
 8./tb_UPDSLOWPHYTOLLR.v
 F./tb_UPDSLOWPHYTOLLR.v
 L0 2
-Z6 OL;L;10.2c;57
+Z6 OL;L;10.2;57
 r1
 31
+!s90 -reportprogress|300|./tb_UPDSLOWPHYTOLLR.v|
 Z7 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
 ntb_@u@p@d@s@l@o@w@p@h@y@t@o@l@l@r
-Z8 !s110 1562245204
-!s90 -reportprogress|300|./tb_UPDSLOWPHYTOLLR.v|
-!s100 7g8SJ_nJ7QF4Tb5LXagP?0
-!s108 1562245204.398000
+Z8 !s110 1562318864
+!s108 1562318864.518000
 !s107 ./tb_UPDSLOWPHYTOLLR.v|
 !i10b 1
 !s85 0
-!i111 0
 vUPDSLOWPHYTOLLR
 R8
+!s100 [QFGf]ZSAMFQ2Ai<=fhU_2
 I=?21KbYXcF2KOh=oKP<VO0
-R4
 R5
-w1562245017
+R4
+w1562226250
 8./../design/UPDSLOWPHYTOLLR.v
 F./../design/UPDSLOWPHYTOLLR.v
 L0 1
 R6
 r1
 31
+!s90 -reportprogress|300|./../design/UPDSLOWPHYTOLLR.v|
 R7
 n@u@p@d@s@l@o@w@p@h@y@t@o@l@l@r
-!s100 [QFGf]ZSAMFQ2Ai<=fhU_2
-!s90 -reportprogress|300|./../design/UPDSLOWPHYTOLLR.v|
 !i10b 1
 !s85 0
-!s108 1562245204.563000
+!s108 1562318864.846000
 !s107 ./../design/UPDSLOWPHYTOLLR.v|
-!i111 0
