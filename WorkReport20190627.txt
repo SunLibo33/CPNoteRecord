@@ -1,0 +1,20 @@
+1. High Level Design for 5G NR Rate De Matching 
+   1.1 Document achievement 80% , mainly including the following modules:   
+       A.Submodule High Level Descriptions
+       B.External Interface with the Upstream and downstream modules
+       C.CPU Registers Description
+       D.Submodule High Level Design
+       E.Function and Description for each Blocks
+   1.2 Based on the Review and guidelines from Team Leader and Update the corresponding documents for 3 versions:
+       V0.1	2019-June-20	Initial Created Version
+       V0.2	2019-June-23	Update TOP Design Frame Diagram
+       V0.3	2019-June-26	Introduce design concept of User based and Symbol based
+2. High Level Design for 4G LTE/5G NR Uplink data stream process between LOW Phy and LLR Module
+   2.1 Document achievement 10% , mainly including the following modules:  
+       A.Submodule High Level Descriptions
+       B.External Interface with the Upstream and downstream modules   
+   2.2 Based on the Review and guidelines from Team Leader do some pre-documents in the following points:
+       V0.1	2019-June-25	Design the draft diagram, idea and concept for the high-level design
+       V0.2	2019-June-26	External Interface Definition , Feature description between the sub-module and other Closely related module such as LLR
+
+      

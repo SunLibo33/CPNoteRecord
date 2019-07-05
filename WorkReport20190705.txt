@@ -1,0 +1,19 @@
+1. High Level Design for 5G NR Rate De Matching 
+   1.1 Document achievement 100% , mainly including the following modules:   
+       Based on the Review and guidelines from Team Leader and Update the corresponding documents for following points:
+       1.1.1 Combine Management module : Data path Diagram and Descriptions and Finite State Machine(Transition condition and Operations)
+       1.1.2 Send Combine User Data to HARQ Module : provide some status indicator signal communicate with HARQ module in order to improve the system performance
+       1.1.3 Input Buffer Read Control module : Data Read Scheme and Descriptions
+2. High Level Design for 4G LTE/5G NR EQ_IF （Uplink data stream process between LOW Phy and LLR Module）
+   1.1 Document achievement 50% , mainly including the following modules:   
+       1.1.1 System Module Division and Resource Occupation
+       1.1.2 Data path and Clock Domain Diagram and Descriptions
+       1.1.3 List of CPU Configuration Registers and warning message Reporting to CPU
+   2.2 Based on the review and warmly guidelines from Team Leader update document in the following points:
+       2.2.1 Initial Created Version
+       2.2.2 Overall module design and system architecture
+       2.2.3 For SYNC FIFO Write/Read Finite State Machine
+
+
+
+      
