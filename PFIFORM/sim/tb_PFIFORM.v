@@ -26,6 +26,7 @@ reg [95:0]  tb_in_a_1d;
 reg        JoinEnable;
 wire       PopEnable;
 wire       JoinPermit;
+reg        PopPermit;
 
 wire [95:0]PopData;
 
@@ -41,8 +42,11 @@ initial
 initial 
   begin
     JoinEnable=1'b0;
+	PopPermit=1'b0;
     #200
     JoinEnable=1'b1;
+	#2000
+	PopPermit=1'b1;
   end
   
   
@@ -54,9 +58,9 @@ PFIFORM PFIFORM_instance(
   .JoinEnable(JoinEnable),
   .JoinPermit(JoinPermit),
   .PopEnable(PopEnable),
-  .PopPermit(1'b0),  
+  .PopPermit(PopPermit),  
   .JoinAmout(4'd15),
-  .PopAmout(4'd11),
+  .PopAmout(4'd7),
   //.JoinData({12{8'hAA}}),
   .JoinData(tb_in_a_1d),
   .PopData(PopData)
@@ -88,22 +92,25 @@ PFIFORM PFIFORM_instance(
 		   for(m=0;m<256;m=m+16)
 		   begin
 			 @(posedge tb_sclk);
-			   tb_in_a1=m;
-               tb_in_a2=m+1;
-               tb_in_a3=m+2;
-               tb_in_a4=m+3;
-               tb_in_a5=m+4;
-               tb_in_a6=m+5;
-               tb_in_a7=m+6;
-               tb_in_a8=m+7;
-               tb_in_a9=m+8;
-               tb_in_a10=m+9;
-               tb_in_a11=m+10;
-               tb_in_a12=m+11;
-               tb_in_a13=m+12;
-               tb_in_a14=m+13;
-               tb_in_a15=m+14;
-               tb_in_a16=m+15;
+			   if(JoinPermit==1'b1)
+			     begin
+				   tb_in_a1=m;
+				   tb_in_a2=m+1;
+				   tb_in_a3=m+2;
+				   tb_in_a4=m+3;
+				   tb_in_a5=m+4;
+				   tb_in_a6=m+5;
+				   tb_in_a7=m+6;
+				   tb_in_a8=m+7;
+				   tb_in_a9=m+8;
+				   tb_in_a10=m+9;
+				   tb_in_a11=m+10;
+				   tb_in_a12=m+11;
+				   tb_in_a13=m+12;
+				   tb_in_a14=m+13;
+				   tb_in_a15=m+14;
+				   tb_in_a16=m+15;
+				 end
 		   end
 		end
 	 end

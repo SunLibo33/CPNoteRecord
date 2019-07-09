@@ -2,13 +2,13 @@
 // Company: <...>
 // Engineer: <Libo Sun>
 //
-// Create Date: <2019 June 10>
+// Create Date: <2019 July 09 23:21>
 // Design Name: <name_of_top-level_design>
-// Module Name: <DeRateMatching>
+// Module Name: <RateDeMatching>
 // Target Device: <target device>
 // Tool versions: <tool_versions>
 // Description:
-//    <5G NR TS38.212 for the DeRateMatching function of decode Phase>
+//    <5G NR TS38.212 for the RateDeMatching function of decode Phase>
 // Dependencies:
 //    <Dependencies here>
 // Revision:
@@ -19,23 +19,23 @@
 
 module PFIFORM 
 (
-  input  wire         i_rx_rstn, 		 
-  input  wire         i_core_clk,
+  input  wire         i_rx_rstn,  //Reset signal with asynchronous and active low		 
+  input  wire         i_core_clk, //System Clock
   
-  input  wire         JoinEnable, //Write Enable signal from  FIFO Write module
-  output wire         JoinPermit, //Write Ready  signal to    FIFO Write module 
+  input  wire         JoinEnable, //Write Enable signal come from   the FIFO Write module
+  output wire         JoinPermit, //Write Ready  signal to   inform the FIFO Write module                                   
+                                  //if (JoinPermit==1'b1) means that current write operation is Effective
                                   
-                                  //JoinPermit==1'b0, means write operation will be ignored
-                                  
-  input  wire         PopPermit,  //Read Ready signal from  FIFO Read module
+  input  wire         PopPermit,  //Read Ready signal from FIFO Read module  
+                                  //if (PopPermit==1'b1) means that FIFO Read module is ready to receive data
 
-  input  wire  [3:0]  JoinAmout,  //Write data amount from  FIFO Write module
-  input  wire  [3:0]  PopAmout,   //Read  data amount from  FIFO Read  module
+  input  wire  [3:0]  JoinAmout,  //Write data amount from  FIFO Write module , Actual numbers minus one (hard bits)
+  input  wire  [3:0]  PopAmout,   //Read  data amount from  FIFO Read  module , Actual numbers minus one (hard bits)
   
-  input  wire  [95:0] JoinData,   //Write data   LSB alignment
+  input  wire  [95:0] JoinData,   //Write data   LSB alignment ,  Valid data bits is [(JoinAmout*6+5):0]
   
-  output wire  [95:0] PopData,    //Read  data   LSB alignment
-  output wire         PopEnable   //Read  enable signal to  FIFO Read module 
+  output wire  [95:0] PopData,    //Read  data   LSB alignment ,  Valid data bits is [(PopAmout*6+5):0]
+  output wire         PopEnable   //Read  enable signal to  FIFO Read module (strobe signal)
 );
 
 wire           JoinEnableInner;
@@ -49,7 +49,7 @@ assign         RegisterCounterBranchCode={PopEnable,JoinEnableInner};
 assign         PopEnable=( ((PopAmout+1'b1)<=RegisterCounter) && (PopPermit==1'b1) );
 
 wire [95:0]  JoinDataPro;
-assign       JoinDataPro=JoinData & ( ({96{1'b1}})>>((15-JoinAmout)*6) );
+assign       JoinDataPro= JoinData <<((15-JoinAmout)*6) ;
 
 wire [287:0] PopDataCache;
 assign       PopData= PopDataCache[95:0] & ( ({96{1'b1}})>>((15-PopAmout)*6) );
@@ -59,7 +59,7 @@ begin
   if(i_rx_rstn==1'b0)
     CacheRegisterFIFO<=288'd0;
   else if(JoinEnableInner==1'b1)
-    CacheRegisterFIFO<=( ( CacheRegisterFIFO<<((JoinAmout+1)*6) ) | JoinDataPro );
+	CacheRegisterFIFO<=( ( CacheRegisterFIFO>>((JoinAmout+1)*6) ) | ({JoinDataPro,192'd0}) );
 end
 
 always @(posedge i_core_clk or negedge i_rx_rstn)
@@ -78,6 +78,7 @@ begin
     end
 end
  
-assign PopDataCache=CacheRegisterFIFO>>((RegisterCounter-PopAmout-1'b1)*6); 
+assign PopDataCache=CacheRegisterFIFO>>((8'd48-RegisterCounter)*6); 
 
 endmodule
+
