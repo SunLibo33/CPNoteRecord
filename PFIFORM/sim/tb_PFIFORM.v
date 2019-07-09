@@ -54,7 +54,7 @@ PFIFORM PFIFORM_instance(
   .JoinEnable(JoinEnable),
   .JoinPermit(JoinPermit),
   .PopEnable(PopEnable),
-  .PopPermit(1'b1),  
+  .PopPermit(1'b0),  
   .JoinAmout(4'd15),
   .PopAmout(4'd11),
   //.JoinData({12{8'hAA}}),
