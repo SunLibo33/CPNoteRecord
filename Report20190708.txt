@@ -1,0 +1,25 @@
+嗯嗯，根据当前负责模块的最新进展：
+1. RDM模块对应的HLD文档，需要在两个方面进行更新：
+   1.1 原来方案使用 i_harq_ready 信号来控制 Output Buffer输出数据给har模块
+       最新方面需要使用i_harq_fetch_indicator 信号来限制新的RDM 过程进行
+2. EQIF模块对应的HLD文档，需要在两个方面进行更新：
+   2.1 需要在原来的方案基础之上，将SYNC FIFO更新至3个：IQ Data/Noise Data and H Data
+   2.2 需要根据昨天的审核，更新SYNC FIFO Write FSM 和 SYNC FIFO Read FSM 
+   
+优先把5G部分完成，我感觉好的建议可能有两点吧：
+1. 大家可以相互帮忙看看当前文档，多多交流？
+2. 后续文档，可以适当添加第二作者？
+
+大侠，早上好呀~
+
+目前的思路主要有两个点：
+1.为了保证Combine过程简洁和可靠，直接以Ncb'(Ncb Bits - Null Bits)作为周期，原有设计保持；
+2.数据发送模块，增加数据对齐和Null Bits插入的适配功能
+
+在进行数据对齐和Null Bits插入的时候，为了保证设计的简洁和可靠（避免第一个发送地址尾巴的翻折),目前的思路需要确认：
+1.[第一步]先寻找需要发送给LDPC译码器，首Bits在Ncb' Output Buffer中的位置，以此位置作为第一个时钟周期所发送的起始位置
+2.[第二步]当Ncb>(K-2Zc)时候，整个过程分为3段进行发送
+  第1段：K`-2Zc个有效数据 /*从Ncb' Output Buffer按照顺序获取*/
+  第2段：K-K`个Null Bits
+  第3段：Ncb'-(K`-2Zc)个有效数据 /*从Ncb' Output Buffer按照顺序获取*/
+  
