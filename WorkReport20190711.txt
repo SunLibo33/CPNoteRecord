@@ -1,0 +1,22 @@
+Credentials for new 5G build server
+Wed 7/10/2019 3:46 PM
+
+michael.salvi@casa-systems.com
+
+Hi Libo,
+
+I have created a Linux account for you on our new build server for the 5G project. The server is:
+
+Hostname:  john.casa-systems.com
+IP Address: 172.25.2.100
+
+Your ssh credentials are:
+
+Username: lsun
+Password: lsun123
+
+You can change this by logging into john.casa-systems.com and entering the following command:   yppasswd
+
+You’ll need to enter the password above as your current password, then a new password twice to confirm.
+
+-Mike

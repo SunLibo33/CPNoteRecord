@@ -1,0 +1,16 @@
+1. New Feature for High Level Design for 5G NR Rate De Matching 
+   1.1 Document achievement 100% , (document add detail information)
+       Based on the Review and guidelines from Team Leader and optimization of the corresponding documents for following points:
+       1.1.1 Input Buffer Read Control module need update the FSM when E Size < Ncb` , fill the placeholder from E Size to Ncb` With all zero
+       1.1.2 Ncb` need caculation from the original parameters of K,Zc,K` and Ncb
+       1.1.3 The start position in Ncb` Buffer need caculation by  the original parameters of K0,K,Zc,K` and Ncb
+       1.1.4 Sending Combined User data to harq module sequence using the Parallel FIFO running mechanism
+2. High Level Design for 4G LTE/5G NR EQ_IF （Uplink data stream process between LOW Phy and LLR Module）
+   1.1 Document achievement 60% , mainly including the following modules:   
+       1.1.1 Update to 3 SYNC FIFO for IQ Data, noise Data and H Data
+       1.1.2 Update the FIFO Write and Read Finite State Machine
+       1.1.3 Update the interface between UL_Ctrl module and EQ_IF
+   2.2 Based on the review and warmly guidelines from Team Leader update document in the following points:
+       2.2.1 Add Continuous loop query mechanism for IQ Data FIFO / Noise Data FIFO or H Data FIFO from DDRC by AXI4 Interface
+       2.2.2 Add Data Length Required for Burst Transmission
+       2.2.3 Implementation of finite state machine (FSM) for FIFO Read Control module
