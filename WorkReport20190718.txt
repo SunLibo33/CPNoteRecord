@@ -1,0 +1,20 @@
+1. Project Phase need Arrangement
+   [Scheme 1] HLD RateDeMatching --> HLD EQ_IF --> HLD Sub-block de-interleaver 
+   [Scheme 2] HLD RateDeMatching --> HLD EQ_IF --> RTL RateDeMatching --> RTL EQ_IF 
+   /* Scheme 2 better because 5G NR high priority */
+   
+2. VDI Access
+   Here is the server address:
+   https://vdi.casa-systems.com
+
+   Username: libo.sun@casa-systems.com
+   Password: Casals7327
+   
+   MyPath: C:\Users\libo.sun\Desktop\RTLDesign
+   
+3. How to transfer files from Personal Computer to VDI platform?
+   /* In VDI platform, we can access the Personal Computer laptop Windows os(operation system)for directly */
+4. DDR SDRAM 128 Bits or 96 Bits?
+
+
+   
