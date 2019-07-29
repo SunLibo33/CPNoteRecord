@@ -28,7 +28,7 @@ wire       PopEnable;
 wire       JoinPermit;
 reg        PopPermit;
 
-wire [95:0]PopData;
+wire [191:0]PopData;
 
 initial 
   begin
@@ -52,6 +52,14 @@ initial
   
 always #10  tb_sclk=~tb_sclk; 
   
+//Libo Sun , Unit Testing JoinAmout+1,  PopAmout+1
+//                              7        19
+//                              19       7
+//                              7        7
+//                              19       19
+//                              32       32
+//                              16       16
+//                              24       24
 PFIFORM PFIFORM_instance(
   .i_rx_rstn(tb_rst_n),  
   .i_core_clk(tb_sclk),
@@ -59,13 +67,12 @@ PFIFORM PFIFORM_instance(
   .JoinPermit(JoinPermit),
   .PopEnable(PopEnable),
   .PopPermit(PopPermit),  
-  .JoinAmout(4'd6),
-  .PopAmout(4'd11),
+  .JoinAmout(5'd23),
+  .PopAmout(5'd22),
   //.JoinData({12{8'hAA}}),
-  .JoinData(tb_in_a_1d),
+  .JoinData({tb_in_a_1d,tb_in_a_1d}),
   .PopData(PopData)
-
-  
+ 
   
 );
 /*     input  wire         i_rx_rstn, 		 

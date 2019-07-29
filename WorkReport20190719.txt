@@ -1,0 +1,14 @@
+1. New Feature for High Level Design for 5G NR Rate De Matching 
+   Document achievement 100% , (document add detail information)
+       Based on the Review and warmly guidelines from Team Leader and optimization of the corresponding documents for following points:
+       1.1 Data alignment and NULL bits insertion operations will be performed on the combined soft bits 
+       1.2 In order to Simplify the design of harq module and improve the reliability of the 5G NR system.
+       1.3 The start position in Ncb` Buffer caculation by the original parameters of K0,K,Zc,K` and Ncb
+2. High Level Design for 4G LTE/5G NR EQ_IF （Uplink data stream process between LOW Phy and LLR Module）
+   Document achievement 75% , (document add detail information)
+       Based on the review and warmly guidelines from Team Leader update document in the following points:
+       2.1 Add i_slot_layer_indicator Interface to represent that current total layers
+       2.2 Modification of the timing diagram with AXI4 Interface of DDR Controller
+       2.3 Optimization of finite state machine (FSM) for FIFO Write/Read Control module
+
+ 

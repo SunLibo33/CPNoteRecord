@@ -1,4 +1,4 @@
-RateDeMatching 2019 June 29 0733
+RateDeMatching 2019 July 25 0733
 1.When new PUSCH data coming, but input Ping/Pong buffer data have not been processed completely; 
   if the write address is equal or ahead of the read address for the corresponding Ping/Pong buffer, 
   error message will report to ARM Processor to indicate that ‘Input buffer overflow’, 
@@ -25,7 +25,7 @@ RateDeMatching 2019 June 29 0733
                       2.2.2.2.1 if the write address is less than the read address for the corresponding Ping/Pong buffer           
                                 'Input buffer overflow' will stay at '0'
 
-Data Stream Process between Low PHY and LLR 2019 July 01 1716
+Data Stream Process between Low PHY and LLR 2019 July 25 1716
 1. The Ratio of Data Amount between the IQ data and noise data for each user configured by software during Corresponding time slot                   
    /* This Ratio , Is it exactly an integer?  If so, it can simplifie our design */
    /* Actually, the i_user_iq_noise_rate should Multiply by 4 , 

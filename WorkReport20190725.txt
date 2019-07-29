@@ -1,0 +1,12 @@
+1. New Feature for High Level Design for 5G NR Rate De Matching 
+   Document achievement 100% , (document add detail information)
+   1.1 Optimization of the start position related parameters for Soft bits Data alignment and Null insertion adaptation module 
+   1.2 Data width of input data bufer Compatibility design with 4G LTE channel de-interleaver 
+2. High Level Design for 4G LTE/5G NR EQ_IF （Uplink data stream process between LOW Phy and LLR Module）
+   Document achievement 90% , mainly including the following modules:   
+   2.1 Update the o_noise_data/o_h_data to adapt the two-layers system
+   2.2 Optimization the parameters interface between EQ_IF and TOP Control
+
+     
+
+
