@@ -22,6 +22,9 @@ reg [5:0]  tb_in_a15;
 reg [5:0]  tb_in_a16;
 reg [95:0]  tb_in_a_1d;
 
+reg[4:0]JoinAmout;
+reg[4:0]PopAmout;
+
 
 reg        JoinEnable;
 wire       PopEnable;
@@ -50,6 +53,18 @@ initial
   end
   
   
+initial 
+  begin
+   JoinAmout=5'd10;
+   PopAmout=5'd19;
+   #2290.3
+   JoinAmout=5'd19;
+   PopAmout=5'd10;
+ 
+  end
+  
+  
+  
 always #10  tb_sclk=~tb_sclk; 
   
 //Libo Sun , Unit Testing JoinAmout+1,  PopAmout+1
@@ -67,8 +82,8 @@ PFIFORM PFIFORM_instance(
   .JoinPermit(JoinPermit),
   .PopEnable(PopEnable),
   .PopPermit(PopPermit),  
-  .JoinAmout(5'd23),
-  .PopAmout(5'd22),
+  .JoinAmout(JoinAmout),
+  .PopAmout(PopAmout),
   //.JoinData({12{8'hAA}}),
   .JoinData({tb_in_a_1d,tb_in_a_1d}),
   .PopData(PopData)
