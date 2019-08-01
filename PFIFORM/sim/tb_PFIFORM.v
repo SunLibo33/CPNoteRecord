@@ -57,7 +57,7 @@ initial
   begin
    JoinAmout=5'd10;
    PopAmout=5'd19;
-   #2290.3
+   #2290.1
    JoinAmout=5'd19;
    PopAmout=5'd10;
  
