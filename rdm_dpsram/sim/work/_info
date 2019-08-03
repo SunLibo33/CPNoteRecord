@@ -1,0 +1,55 @@
+m255
+K4
+z2
+13
+cModel Technology
+Z0 dC:\Work\MyGit\CPNoteRecord\rdm_dpsram\sim
+!i10d 8192
+!i10e 25
+!i10f 100
+T_opt
+Z1 !s110 1564730745
+VUn<GH4?5c_5NVNKz8X]_Y1
+04 13 4 work tb_rdm_dpsram fast 0
+=1-847beb39f64b-5d43e579-1b1-3bb8
+o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+OL;O;10.2;57
+vrdm_dpsram
+I3aUCzDkEL>X7SS_<QHLEW2
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+Z3 dC:\Work\MyGit\CPNoteRecord\rdm_dpsram\sim
+w1564729347
+8./../design/rdm_dpsram.v
+F./../design/rdm_dpsram.v
+L0 11
+Z4 OL;L;10.2;57
+r1
+31
+Z5 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+!s100 >bTf7=Ae`;5_1IN:RdZJc1
+!s90 -reportprogress|300|./../design/rdm_dpsram.v|
+R1
+!i10b 1
+!s85 0
+!s108 1564730745.008000
+!s107 ./../design/rdm_dpsram.v|
+vtb_rdm_dpsram
+IHb2iKZBW8ToW8i`>3B>KB3
+R2
+R3
+w1564730735
+8./tb_rdm_dpsram.v
+F./tb_rdm_dpsram.v
+L0 2
+R4
+r1
+31
+R5
+!s90 -reportprogress|300|./tb_rdm_dpsram.v|
+!s110 1564730744
+!s100 fH0WVl;>3zD3SalndHWcg1
+!s108 1564730744.912000
+!s107 ./tb_rdm_dpsram.v|
+!i10b 1
+!s85 0

@@ -1,0 +1,28 @@
+1. New Feature for High Level Design for 5G NR Rate De Matching 
+   Document achievement 100% , (document add detail information)
+   1.1 Optimization the input buffer data width, configuration parameters and input buffer overflow error process mechanism 
+   1.2 Optimization the timing sequence diagram, interface with surrounding modules and FSM transition details
+   
+2. High Level Design for 4G LTE/5G NR EQ_IF （Uplink data stream process between LOW Phy and LLR Module）
+   Document achievement 100% , mainly including the following modules:   
+   2.1 Optimization the parameters interface between EQ_IF and UL_Ctrl and UC_Cfg module
+   2.2 Update the interface between DDRC(AXI4) and EQ_IF SYNC FIFO Read FSM
+   
+3. Sram resource estimation for 5G NR Rate De Matching and EQ_IF
+
+4. Access for new 5G build server by credentials , design rule for RTL Coding reference 
+   
+ 
+//********************************************//
+1. Cent OS, Terminal Open issue need IT or software help
+2. Rate De Mactching RTL Design
+   2.1 Symbol Based Scheme 
+   2.2 Support Ping Pong E Size for each user
+   2.3 Data stream speed limit scheme from RDM module to EQ_IF module (condition : 2*E Size - N, N=128 IQ)
+3. 
+
+
+
+     
+
+
