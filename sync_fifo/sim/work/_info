@@ -8,49 +8,48 @@ Z0 dC:\Work\MyGit\CPNoteRecord\sync_fifo\sim
 !i10e 25
 !i10f 100
 T_opt
-Z1 !s110 1565080220
-Z2 V8?h:0SdU0:5TJLl=5_EJ23
-Z3 04 12 4 work tb_sync_fifo fast 0
-Z4 =1-847beb39f64b-5d493a9c-1e8-15ac
-Z5 o-quiet -auto_acc_if_foreign -work work +acc
-Z6 n@_opt
-Z7 OL;O;10.2;57
-Z8 dC:\Work\MyGit\CPNoteRecord\sync_fifo\sim
+!s110 1565152352
+VmCPznG8`VzQJXJ:D`P>V51
+04 12 4 work tb_sync_fifo fast 0
+=1-847beb39f64b-5d4a545f-365-2760
+o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+OL;O;10.2;57
 vsync_fifo
-Z9 !s110 1565080451
-!i10b 1
-Z10 !s100 WBC]ghEYN_>dSI5D`;H4B0
-Z11 IX>Fc73^KY1JIAnIfa`LZC1
-Z12 V`JN@9S9cnhjKRR_L]QIcM3
-R8
-Z13 w1565080180
-Z14 8./../design/sync_fifo.v
-Z15 F./../design/sync_fifo.v
+Z1 !s110 1565152351
+IX>Fc73^KY1JIAnIfa`LZC1
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+Z3 dC:\Work\MyGit\CPNoteRecord\sync_fifo\sim
+w1565080180
+8./../design/sync_fifo.v
+F./../design/sync_fifo.v
 L0 11
-Z16 OL;L;10.2;57
-r1
-!s85 0
-31
-!s108 1565080451.649000
-!s107 ./../design/sync_fifo.v|
-Z17 !s90 -reportprogress|300|./../design/sync_fifo.v|
-Z18 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
-vtb_sync_fifo
-Z19 !s100 i^zWjU5IMJONeKI92YHNP3
-Z20 I?j`MFBBJ=zl1LD7CaGE8k3
-R12
-R8
-Z21 w1565080203
-Z22 8./tb_sync_fifo.v
-Z23 F./tb_sync_fifo.v
-L0 2
-R16
+Z4 OL;L;10.2;57
 r1
 31
-Z24 !s90 -reportprogress|300|./tb_sync_fifo.v|
-R18
-R9
+Z5 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+!s100 WBC]ghEYN_>dSI5D`;H4B0
+!s90 -reportprogress|300|./../design/sync_fifo.v|
 !i10b 1
 !s85 0
-Z25 !s108 1565080451.550000
-Z26 !s107 ./tb_sync_fifo.v|
+!s108 1565152351.427000
+!s107 ./../design/sync_fifo.v|
+vtb_sync_fifo
+I^SjcfXJgN@j9a<;H9eSG51
+R2
+R3
+w1565152330
+8./tb_sync_fifo.v
+F./tb_sync_fifo.v
+L0 2
+R4
+r1
+31
+R5
+R1
+!s90 -reportprogress|300|./tb_sync_fifo.v|
+!s100 WhTGcWXUhX<:ifoVmm_Z63
+!s108 1565152351.308000
+!s107 ./tb_sync_fifo.v|
+!i10b 1
+!s85 0
