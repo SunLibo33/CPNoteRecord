@@ -1,7 +1,7 @@
-INSERT OR REPLACE INTO mainfiles (auxid,fileid,duname,name,size,time,flags) VALUES (2,55,'@_opt','voptfer57m',8192,strftime('%s','now'),259);
+INSERT OR REPLACE INTO mainfiles (auxid,fileid,duname,name,size,time,flags) VALUES (2,70,'@_opt','voptvqr57m',8192,strftime('%s','now'),259);
 INSERT OR REPLACE INTO meta (key,value1,value2) VALUES ('page_inserts',2,IFNULL((SELECT value2 FROM meta WHERE key='page_inserts' AND value1=2), 0)+1);
 INSERT OR REPLACE INTO meta (key,value1,value2) VALUES ('page_inserts',2,IFNULL((SELECT value2 FROM meta WHERE key='page_inserts' AND value1=2), 0)+1);
-UPDATE mainfiles SET time=strftime('%s','now'),size=22224,flags=259 WHERE auxid=2 AND fileid=55;
+UPDATE mainfiles SET time=strftime('%s','now'),size=22592,flags=259 WHERE auxid=2 AND fileid=70;
 INSERT OR REPLACE INTO meta (key,value1,value2) VALUES ('page_inserts',2,IFNULL((SELECT value2 FROM meta WHERE key='page_inserts' AND value1=2), 0)+1);
-INSERT OR REPLACE INTO mainfiles (auxid,fileid,duname,name,size,time,flags) VALUES (2,56,'@_opt','voptk8bi9w',1073,strftime('%s','now'),259);
+INSERT OR REPLACE INTO mainfiles (auxid,fileid,duname,name,size,time,flags) VALUES (2,71,'@_opt','vopt4mbi9w',1116,strftime('%s','now'),259);
 INSERT OR REPLACE INTO meta (key,value1,value2) VALUES ('page_inserts',2,IFNULL((SELECT value2 FROM meta WHERE key='page_inserts' AND value1=2), 0)+1);

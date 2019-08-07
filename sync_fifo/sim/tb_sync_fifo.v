@@ -20,21 +20,26 @@ initial
 	tb_sclk  = 1'b0;
     #100
 	tb_rst_n = 1'b1;
-	gen_data();
- 
   end
+  
+initial 
+  begin
+    gen_data();
+  end
+
   
 initial 
   begin
     wr  = 1'b0;
 	rd  = 1'b0;
-    #180
+    #200
     wr  = 1'b1;
-    #190
+    #200
     wr  = 1'b0;
-    #290
+    #290.3
     rd  = 1'b1;
-     
+    #200
+    rd  = 1'b0;     
   end  
   
    

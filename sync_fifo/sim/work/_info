@@ -8,15 +8,15 @@ Z0 dC:\Work\MyGit\CPNoteRecord\sync_fifo\sim
 !i10e 25
 !i10f 100
 T_opt
-!s110 1565152352
-VmCPznG8`VzQJXJ:D`P>V51
+Z1 !s110 1565163976
+VGabbC?J6VFHQ0Y3F27elo0
 04 12 4 work tb_sync_fifo fast 0
-=1-847beb39f64b-5d4a545f-365-2760
+=1-847beb39f64b-5d4a81c8-2be-3b4c
 o-quiet -auto_acc_if_foreign -work work +acc
 n@_opt
 OL;O;10.2;57
 vsync_fifo
-Z1 !s110 1565152351
+R1
 IX>Fc73^KY1JIAnIfa`LZC1
 Z2 V`JN@9S9cnhjKRR_L]QIcM3
 Z3 dC:\Work\MyGit\CPNoteRecord\sync_fifo\sim
@@ -32,13 +32,13 @@ Z5 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
 !s90 -reportprogress|300|./../design/sync_fifo.v|
 !i10b 1
 !s85 0
-!s108 1565152351.427000
+!s108 1565163976.268000
 !s107 ./../design/sync_fifo.v|
 vtb_sync_fifo
-I^SjcfXJgN@j9a<;H9eSG51
+ILZXJVKnli?1Vl6=O3J6jc1
 R2
 R3
-w1565152330
+w1565163969
 8./tb_sync_fifo.v
 F./tb_sync_fifo.v
 L0 2
@@ -48,8 +48,8 @@ r1
 R5
 R1
 !s90 -reportprogress|300|./tb_sync_fifo.v|
-!s100 WhTGcWXUhX<:ifoVmm_Z63
-!s108 1565152351.308000
+!s100 ?172a`g1>j3^D9mBeU@ZM1
+!s108 1565163976.171000
 !s107 ./tb_sync_fifo.v|
 !i10b 1
 !s85 0
