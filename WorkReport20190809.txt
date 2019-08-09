@@ -1,0 +1,20 @@
+1. Register transfer level Design for 5G NR Rate De Matching 
+   Document achievement 15% ,  
+   1.1 Input Buffer Write Control for Dual Port SRAM including Address/Data and Byte Enable group signals
+   1.2 Arbitration module for Parameter request from UL_CFG module , support multiple request source
+   1.3 Sync FIFO store the E01 Size Ready Code with User Index and Ping Ping Buffer area indicator
+   1.4 All_users_data_comp signal generation , transition to IDLE state for advance before slot_end coming 
+   1.5 Feedback signal to EQ_IF for Data stream Waiting mechanism, in order to avoid Unexpected data overflow
+   1.6 Soft Bits scheme , the data width update from 6 to 8 following 5G NR system optimization
+
+2. Design rule and Coding style for RTL Coding reference  
+    
+3. Detail optimization for High Level Document（Rate De Matching） from RTL Coding
+   
+ 
+   
+ 
+
+     
+
+
