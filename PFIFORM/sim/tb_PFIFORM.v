@@ -4,34 +4,36 @@ module tb_PFIFORM();
 reg tb_sclk;
 reg tb_rst_n;
 
-reg [5:0]  tb_in_a1;
-reg [5:0]  tb_in_a2;
-reg [5:0]  tb_in_a3;
-reg [5:0]  tb_in_a4;
-reg [5:0]  tb_in_a5;
-reg [5:0]  tb_in_a6;
-reg [5:0]  tb_in_a7;
-reg [5:0]  tb_in_a8;
-reg [5:0]  tb_in_a9;
-reg [5:0]  tb_in_a10;
-reg [5:0]  tb_in_a11;
-reg [5:0]  tb_in_a12;
-reg [5:0]  tb_in_a13;
-reg [5:0]  tb_in_a14;
-reg [5:0]  tb_in_a15;
-reg [5:0]  tb_in_a16;
-reg [95:0]  tb_in_a_1d;
+reg [7:0]  tb_in_a1;
+reg [7:0]  tb_in_a2;
+reg [7:0]  tb_in_a3;
+reg [7:0]  tb_in_a4;
+reg [7:0]  tb_in_a5;
+reg [7:0]  tb_in_a6;
+reg [7:0]  tb_in_a7;
+reg [7:0]  tb_in_a8;
+reg [7:0]  tb_in_a9;
+reg [7:0]  tb_in_a10;
+reg [7:0]  tb_in_a11;
+reg [7:0]  tb_in_a12;
+reg [7:0]  tb_in_a13;
+reg [7:0]  tb_in_a14;
+reg [7:0]  tb_in_a15;
+reg [7:0]  tb_in_a16;
+reg [127:0]  tb_in_a_1d;
 
 reg[4:0]JoinAmout;
 reg[4:0]PopAmout;
 
 
 reg        JoinEnable;
+reg        JoinEnableCache;
+reg        WrEnable;
 wire       PopEnable;
 wire       JoinPermit;
 reg        PopPermit;
 
-wire [191:0]PopData;
+wire [255:0]PopData;
 
 initial 
   begin
@@ -44,12 +46,18 @@ initial
   
 initial 
   begin
-    JoinEnable=1'b0;
+    WrEnable=1'b0;
 	PopPermit=1'b0;
     #200
-    JoinEnable=1'b1;
-	#2000
+    WrEnable=1'b1;
+    #1930.7
+    WrEnable=1'b0;
+	#1870
 	PopPermit=1'b1;
+    #2000
+    WrEnable=1'b1;
+    #18000
+    WrEnable=1'b0;
   end
   
   
@@ -58,8 +66,8 @@ initial
    JoinAmout=5'd10;
    PopAmout=5'd19;
    #2290.1
-   JoinAmout=5'd19;
-   PopAmout=5'd10;
+   JoinAmout=5'd23;
+   PopAmout=5'd15;
  
   end
   
@@ -67,14 +75,18 @@ initial
   
 always #10  tb_sclk=~tb_sclk; 
   
-//Libo Sun , Unit Testing JoinAmout+1,  PopAmout+1
+//Libo Sun , Unit Testing JoinAmout ,  PopAmout 
 //                              7        19
 //                              19       7
 //                              7        7
 //                              19       19
-//                              32       32
-//                              16       16
-//                              24       24
+//                              31       31
+//                              15       15
+//                              23       23
+//                              17       17
+//                              17       15
+//                              23       15
+
 PFIFORM PFIFORM_instance(
   .i_rx_rstn(tb_rst_n),  
   .i_core_clk(tb_sclk),
@@ -105,6 +117,13 @@ PFIFORM PFIFORM_instance(
   output wire  [95:0] PopData,
   output wire         PopEnable  
    */
+   
+ 
+always @(posedge tb_sclk)
+begin
+JoinEnableCache<= JoinPermit & WrEnable;
+JoinEnable<=JoinEnableCache;
+end
 
  task gen_data();
      integer m,n;

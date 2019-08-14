@@ -4,7 +4,7 @@
 //
 // Create Date: <2019 July 09 23:21>
 // Design Name: <name_of_top-level_design>
-// Module Name: <RateDeMatching>
+// Module Name: <RateDeMatching->parallel_fifo>
 // Target Device: <target device>
 // Tool versions: <tool_versions>
 // Description:
@@ -32,36 +32,39 @@ module PFIFORM
   input  wire  [4:0]  JoinAmout,  //Write data amount from  FIFO Write module , Actual numbers minus one (hard bits)
   input  wire  [4:0]  PopAmout,   //Read  data amount from  FIFO Read  module , Actual numbers minus one (hard bits)
   
-  input  wire  [191:0] JoinData,   //Write data   LSB alignment ,  Valid data bits is [(JoinAmout*6+5):0]
+  input  wire  [255:0] JoinData,   //Write data   LSB alignment ,  Valid data bits is [(JoinAmout*8+7):0]
   
-  output wire  [191:0] PopData,    //Read  data   LSB alignment ,  Valid data bits is [(PopAmout*6+5):0]
+  output wire  [255:0] PopData,    //Read  data   LSB alignment ,  Valid data bits is [(PopAmout*8+7):0]
   output wire          PopEnable   //Read  enable signal to  FIFO Read module (strobe signal)
 );
 
 wire           JoinEnableInner;
 wire [1:0]     RegisterCounterBranchCode;
 reg  [7:0]     RegisterCounter=8'd0;    //may be the data width should be reduce
-reg  [383:0]   CacheRegisterFIFO=384'd0;
+reg  [1535:0]  CacheRegisterFIFO=1536'd0;
 
-assign         JoinEnableInner=((JoinEnable==1'b1)&&(JoinPermit==1'b1));
-//assign       JoinPermit=(JoinAmout+RegisterCounter+1'b1)<=8'd48;
-assign         JoinPermit=(JoinAmout+RegisterCounter)<8'd64;
+wire           JoinPermitInner;
+assign         JoinPermitInner=(JoinAmout+RegisterCounter)<8'd192;
+
+assign         JoinEnableInner=((JoinEnable==1'b1)&&(JoinPermitInner==1'b1));
+assign         JoinPermit=(JoinAmout+RegisterCounter)<8'd128;
+
 assign         RegisterCounterBranchCode={PopEnable,JoinEnableInner};
-//assign       PopEnable=( ((PopAmout+1'b1)<=RegisterCounter) && (PopPermit==1'b1) );
 assign         PopEnable=( (PopAmout<RegisterCounter) && (PopPermit==1'b1) );
 
-wire [191:0]  JoinDataPro;
-assign        JoinDataPro= JoinData <<((31-JoinAmout)*6) ;
+wire [255:0]  JoinDataPro;
+assign        JoinDataPro= JoinData <<( {(31-JoinAmout),3'b000} ) ;
 
-wire [383:0] PopDataCache;
-assign       PopData= PopDataCache[191:0] & ( ({192{1'b1}})>>((31-PopAmout)*6) );
+wire [1535:0] PopDataCache;
+//assign      PopData= PopDataCache[255:0];
+assign        PopData= PopDataCache[255:0] & ( ({256{1'b1}})>>((31-PopAmout)*8) );
 
 always @(posedge i_core_clk or negedge i_rx_rstn)
 begin
   if(i_rx_rstn==1'b0)
-    CacheRegisterFIFO<=384'd0;
+    CacheRegisterFIFO<=1536'd0;
   else if(JoinEnableInner==1'b1)
-	CacheRegisterFIFO<=( ( CacheRegisterFIFO>>((JoinAmout+1)*6) ) | ({JoinDataPro,192'd0}) );
+	CacheRegisterFIFO<=( ( CacheRegisterFIFO>>( {(JoinAmout+1),3'b000} ) ) | ({JoinDataPro,1280'd0}) );
 end
 
 always @(posedge i_core_clk or negedge i_rx_rstn)
@@ -80,9 +83,8 @@ begin
     end
 end
  
-//assign PopDataCache=CacheRegisterFIFO>>((8'd48-RegisterCounter)*6); 
-assign PopDataCache=CacheRegisterFIFO>>((8'd64-RegisterCounter)*6); 
 
+assign PopDataCache=CacheRegisterFIFO>>( {(8'd192-RegisterCounter),3'b000} ); 
 
 
 endmodule
