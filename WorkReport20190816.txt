@@ -1,0 +1,14 @@
+﻿1. Register transfer level Design for 5G NR Rate De Matching 
+   achievement 40% ,  
+   1.1 Input Buffer Read Control for Dual Port SRAM including depends on Qm and Data width 1152
+   1.2 Deinterleaving function implementation following with Input Buffer Read Control   
+2. Optimization the RTL Design for Parallel FIFO    
+3. Research and simulation behavior and characteristics for Embedded DPSRAM
+   
+ 
+   
+ 
+
+     
+
+
