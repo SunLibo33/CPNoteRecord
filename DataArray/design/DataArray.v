@@ -24,7 +24,10 @@ generate
               if(i_rx_rstn==1'b0)
 	              RAM [i] <= 20'd0;
                 else if((i_demux_user_end==1'b1)&&(i_user_idx_one_hot[i]==1'b1))
-                  RAM [i] <= RAMS; 
+		      //else if((i_demux_user_end==1'b1)&&(i_user_idx_one_hot[i]==1'b0))//Error Condition	
+                  RAM [i] <= RAMS; 				  
+				//RAM [i][3:0] <= RAMS;//Partly assign
+				//RAM [i][7:0] <= RAMS;//Partly assign
 	        end
       end
 endgenerate
