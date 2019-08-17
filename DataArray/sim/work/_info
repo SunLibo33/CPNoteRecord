@@ -1,0 +1,78 @@
+m255
+K4
+z2
+13
+cModel Technology
+Z0 dF:/DataArray/sim
+!s112 0.1
+!i10d 8192
+!i10e 25
+!i10f 100
+T_opt
+V7:j_C2mUcEk5WHD;GUS]f2
+Z1 04 12 4 work tb_DataArray fast 0
+=1-74d4355e1b46-5d579034-56-47b0
+Z2 o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+Z3 OL;O;10.2c;57
+Z4 dF:/DataArray/sim
+!s110 1566019636
+T_opt1
+VO`mjIBZe0<WR[j2A_3c=13
+04 9 4 work DataArray fast 0
+=1-74d4355e1b46-5d579166-1f6-42fc
+o-quiet -auto_acc_if_foreign -work work
+n@_opt1
+R3
+R4
+!s110 1566019943
+T_opt2
+!s110 1566022209
+VD=NU_^PX5g?IJC?S05TaF0
+R1
+=1-74d4355e1b46-5d579a40-358-3be8
+R2
+n@_opt2
+R3
+vDataArray
+Z5 !s110 1566022208
+IZPXG2cDM]X9PdQ;:6GMjI1
+Z6 V`JN@9S9cnhjKRR_L]QIcM3
+Z7 dE:/DataArray/sim
+w1566022058
+8./../design/DataArray.v
+F./../design/DataArray.v
+L0 2
+Z8 OL;L;10.2c;57
+r1
+31
+Z9 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+n@data@array
+!s100 C2[d5FoWD=;><R4RnkFRA2
+!s90 -reportprogress|300|./../design/DataArray.v|
+!i10b 1
+!s85 0
+!s108 1566022208.296000
+!s107 ./../design/DataArray.v|
+!i111 0
+vtb_DataArray
+I<QRX6QNzkh@BlN93OdM6=3
+R6
+R7
+w1566022204
+8./tb_DataArray.v
+F./tb_DataArray.v
+L0 2
+R8
+r1
+31
+R9
+ntb_@data@array
+R5
+!s90 -reportprogress|300|./tb_DataArray.v|
+!s100 zS:z9hNJ8e`NQzQ5KH[S[0
+!s108 1566022208.201000
+!s107 ./tb_DataArray.v|
+!i10b 1
+!s85 0
+!i111 0

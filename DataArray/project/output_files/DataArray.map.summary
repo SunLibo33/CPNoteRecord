@@ -1,0 +1,18 @@
+Analysis & Synthesis Status : Successful - Sat Aug 17 14:13:24 2019
+Quartus II 64-Bit Version : 14.1.0 Build 186 12/03/2014 SJ Full Version
+Revision Name : DataArray
+Top-level Entity Name : DataArray
+Family : Cyclone IV GX
+Total logic elements : 1,369
+    Total combinational functions : 569
+    Dedicated logic registers : 820
+Total registers : 820
+Total pins : 50
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total GXB Receiver Channel PCS : 0
+Total GXB Receiver Channel PMA : 0
+Total GXB Transmitter Channel PCS : 0
+Total GXB Transmitter Channel PMA : 0
+Total PLLs : 0
