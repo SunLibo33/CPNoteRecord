@@ -20,15 +20,33 @@ reg [7:0]  tb_in_a13;
 reg [7:0]  tb_in_a14;
 reg [7:0]  tb_in_a15;
 reg [7:0]  tb_in_a16;
-reg [127:0]  tb_in_a_1d;
+reg [7:0]  tb_in_a17;
+reg [7:0]  tb_in_a18;
+reg [7:0]  tb_in_a19;
+reg [7:0]  tb_in_a20;
+reg [7:0]  tb_in_a21;
+reg [7:0]  tb_in_a22;
+reg [7:0]  tb_in_a23;
+reg [7:0]  tb_in_a24;
+reg [7:0]  tb_in_a25;
+reg [7:0]  tb_in_a26;
+reg [7:0]  tb_in_a27;
+reg [7:0]  tb_in_a28;
+reg [7:0]  tb_in_a29;
+reg [7:0]  tb_in_a30;
+reg [7:0]  tb_in_a31;
+reg [7:0]  tb_in_a32;
 
-reg[4:0]JoinAmout;
-reg[4:0]PopAmout;
+reg [127:0]  tb_in_a_1d;
+reg [127:0]  tb_in_a_2d;
+reg [127:0]  tb_in_a_3d;
+
+reg[4:0]JoinAmount;
+reg[4:0]PopAmount;
 
 
 reg        JoinEnable;
 reg        JoinEnableCache;
-reg        WrEnable;
 wire       PopEnable;
 wire       JoinPermit;
 reg        PopPermit;
@@ -46,28 +64,28 @@ initial
   
 initial 
   begin
-    WrEnable=1'b0;
+    JoinEnable=1'b0;
 	PopPermit=1'b0;
     #200
-    WrEnable=1'b1;
+    JoinEnable=1'b1;
     #1930.7
-    WrEnable=1'b0;
+    JoinEnable=1'b0;
 	#1870
 	PopPermit=1'b1;
     #2000
-    WrEnable=1'b1;
+    JoinEnable=1'b1;
     #18000
-    WrEnable=1'b0;
+    JoinEnable=1'b0;
   end
   
   
 initial 
   begin
-   JoinAmout=5'd10;
-   PopAmout=5'd19;
+   JoinAmount=5'd10;
+   PopAmount=5'd19;
    #2290.1
-   JoinAmout=5'd23;
-   PopAmout=5'd15;
+   JoinAmount=5'd31;
+   PopAmount=5'd19;
  
   end
   
@@ -75,7 +93,7 @@ initial
   
 always #10  tb_sclk=~tb_sclk; 
   
-//Libo Sun , Unit Testing JoinAmout ,  PopAmout 
+//Libo Sun , Unit Testing JoinAmount ,  PopAmount 
 //                              7        19
 //                              19       7
 //                              7        7
@@ -94,10 +112,10 @@ PFIFORM PFIFORM_instance(
   .JoinPermit(JoinPermit),
   .PopEnable(PopEnable),
   .PopPermit(PopPermit),  
-  .JoinAmout(JoinAmout),
-  .PopAmout(PopAmout),
+  .JoinAmount(JoinAmount),
+  .PopAmount(PopAmount),
   //.JoinData({12{8'hAA}}),
-  .JoinData({tb_in_a_1d,tb_in_a_1d}),
+  .JoinData({tb_in_a_2d,tb_in_a_1d}),
   .PopData(PopData)
  
   
@@ -109,8 +127,8 @@ PFIFORM PFIFORM_instance(
   
   input  wire         PopPermit,
 
-  input  wire  [3:0]  JoinAmout,
-  input  wire  [3:0]  PopAmout,
+  input  wire  [3:0]  JoinAmount,
+  input  wire  [3:0]  PopAmount,
   
   input  wire  [95:0] JoinData,
   
@@ -119,18 +137,13 @@ PFIFORM PFIFORM_instance(
    */
    
  
-always @(posedge tb_sclk)
-begin
-JoinEnableCache<= JoinPermit & WrEnable;
-JoinEnable<=JoinEnableCache;
-end
 
  task gen_data();
      integer m,n;
 	 begin
 	   for(n=0;n<1024;n=n+1) 
 	     begin
-		   for(m=0;m<256;m=m+16)
+		   for(m=0;m<256;m=m+32)
 		   begin
 			 @(posedge tb_sclk);
 			   if(JoinPermit==1'b1)
@@ -151,6 +164,24 @@ end
 				   tb_in_a14=m+13;
 				   tb_in_a15=m+14;
 				   tb_in_a16=m+15;
+				   tb_in_a17=m+16;
+				   tb_in_a18=m+17;
+				   tb_in_a19=m+18;
+				   tb_in_a20=m+19;
+				   tb_in_a21=m+20;
+				   tb_in_a22=m+21;
+				   tb_in_a23=m+22;
+				   tb_in_a24=m+23;
+				   tb_in_a25=m+24;
+				   tb_in_a26=m+25;
+				   tb_in_a27=m+26;
+				   tb_in_a28=m+27;
+				   tb_in_a29=m+28;
+				   tb_in_a30=m+29;
+				   tb_in_a31=m+30;
+				   tb_in_a32=m+31;
+				   
+				   
 				 end
 		   end
 		end
@@ -176,6 +207,29 @@ begin
   tb_in_a3,
   tb_in_a2,
   tb_in_a1
+  
+  };
+end
+
+always @(posedge tb_sclk)
+begin
+  tb_in_a_2d<={
+  tb_in_a32,
+  tb_in_a31,
+  tb_in_a30,
+  tb_in_a29, 
+  tb_in_a28,
+  tb_in_a27,
+  tb_in_a26,
+  tb_in_a25,
+  tb_in_a24,
+  tb_in_a23,
+  tb_in_a22,
+  tb_in_a21,
+  tb_in_a20,
+  tb_in_a19,
+  tb_in_a18,
+  tb_in_a17
   
   };
 end
